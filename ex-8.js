@@ -375,4 +375,30 @@ const bills = [
 
 // Start coding here
 
-const totalPaidByLocation;
+let totalPaidByLocation;
+
+function sumByLocation (bills) {
+    let result=[];
+    const locations = bills.map((bills) => {return bills.location})
+
+    const uniqueLocation = locations.filter((item, index) => {return locations.indexOf(item) === index})
+    
+    const objLocation = {};
+    uniqueLocation.forEach((index, value) => objLocation[index] = value);
+   
+
+    for (let key in objLocation) {
+            objLocation[key] = bills.filter((bills) => {return bills.location === key;}).reduce((sum, num) => {
+                sum =sum+num.total;
+                return sum},0)
+
+    }
+    
+
+    return objLocation
+
+
+}
+
+totalPaidByLocation = sumByLocation(bills);
+console.log(totalPaidByLocation)

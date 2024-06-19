@@ -374,4 +374,16 @@ const bills = [
 ];
 
 // Start coding here
-const billMembers;
+let billMembers;
+
+function memberNameCollected (bills) {
+  let result=[];
+  const memberOnly = bills.filter((memberStatus) => {return memberStatus.member !== null;})
+
+  result = memberOnly.map((member) => {return member.member.name})
+
+  return result
+}
+
+billMembers = memberNameCollected(bills)
+console.log(billMembers)
